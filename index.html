@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebMaster Pro - Профессиональный Анализатор</title>
+    <meta name="description"
+        content="Профессиональный анализатор сайтов нового поколения с комплексной проверкой производительности, SEO, доступности и безопасности">
+    <meta name="keywords" content="анализ сайта, SEO аудит, производительность, доступность, PageSpeed, веб-аналитика">
+    <meta name="author" content="WebMaster Pro">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://webmasterpro.com/">
+    <meta property="og:title" content="WebMaster Pro - Профессиональный Анализатор">
+    <meta property="og:description"
+        content="Комплексный анализ сайтов: производительность, SEO, доступность, безопасность">
+    <meta property="og:image" content="https://webmasterpro.com/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://webmasterpro.com/">
+    <meta property="twitter:title" content="WebMaster Pro - Профессиональный Анализатор">
+    <meta property="twitter:description"
+        content="Комплексный анализ сайтов: производительность, SEO, доступность, безопасность">
+    <meta property="twitter:image" content="https://webmasterpro.com/og-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#667eea">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="WebMaster Pro">
+
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- DNS Prefetch -->
+    <link rel="dns-prefetch" href="//www.google-analytics.com">
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 WebMaster Pro</h1>
+            <p class="subtitle">Профессиональный анализатор сайтов нового поколения</p>
+            <span class="version">v2.0 Premium Edition</span>
+        </div>
+
+        <div class="input-section">
+            <div class="input-group">
+                <input type="url" id="urlInput" placeholder="https://example.com" />
+                <button class="btn btn-primary" id="analyzeBtn">
+                    <span>🔍</span>
+                    <span>Запустить анализ</span>
+                </button>
+            </div>
+
+            <div class="tabs">
+                <button class="tab active" data-tab="basic">Основные проверки</button>
+                <button class="tab" data-tab="advanced">Продвинутый анализ</button>
+                <button class="tab" data-tab="technical">Технический аудит</button>
+                <button class="tab" data-tab="content">Контент и семантика</button>
+            </div>
+
+            <div class="tab-content active" data-content="basic">
+                <div class="options-grid" id="basicOptions">
+                    <label class="option">
+                        <input type="checkbox" checked data-check="performance">
+                        <div class="option-label">
+                            <strong>⚡ Производительность</strong>
+                            <small>FCP, LCP, TTI, CLS</small>
+                        </div>
+                    </label>
+                    <label class="option">
+                        <input type="checkbox" checked data-check="seo">
+                        <div class="option-label">
+                            <strong>🔍 SEO оптимизация</strong>
+                            <small>Meta теги, структура</small>
+                        </div>
+                    </label>
+                    <label class="option">
+                        <input type="checkbox" checked data-check="accessibility">
+                        <div class="option-label">
+                            <strong>♿ Доступность</strong>
+                            <small>WCAG, ARIA, контраст</small>
+                        </div>
+                    </label>
+                    <label class="option">
+                        <input type="checkbox" checked data-check="mobile">
+                        <div class="option-label">
+                            <strong>📱 Мобильная версия</strong>
+                            <small>Адаптивность, viewport</small>
+                        </div>
+                    </label>
+                    <label class="option">
+                        <input type="checkbox" checked data-check="security">
+                        <div class="option-label">
+                            <strong>🔒 Безопасность</strong>
+                            <small>SSL, CSP, заголовки</small>
+                        </div>
+                    </label>
+                    <label class="option">
+                        <input type="checkbox" checked data-check="bestpractices">
+                        <div class="option-label">
+                            <strong>✅ Best Practices</strong>
+                            <small>Стандарты веб-разработки</small>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="tab-content" data-content="advanced">
+                <div class="options-grid">
+                    <label class="option">
+                        <input type="checkbox" checked data-check="pagespeed">
+                        <div class="option-label">
+                            <strong>🎯 PageSpeed детали</strong>
+                            <small>Подробные метрики</small>
+                        </div>
+                    </label>
+                    <label class="option">
+                        <input type="checkbox" checked data-check="images">
+                        <div class="option-label">
+                            <strong>🖼️ Оптимизация изображений</strong>
+                            <small>Форматы, размеры, lazy load</small>
+                        </div>
+                    </label>
+                    <label class="option">
+                        <input type="checkbox" checked data-check="fonts">
+                        <div class="option-label">
+                            <strong>🔤 Шрифты</strong>
+                            <small>Web fonts, загрузка</small>
+                        </div>
+                    </label>
+                    <label class="option">
+                        <input type="checkbox" checked data-check="scripts">
+                        <div class="option-label">
+                            <strong>📜 JavaScript</strong>
+                            <small>Размер, блокировка, defer</small>
+                        </div>
+                    </label>
+                    <label class="option">
+                        <input type="checkbox" checked data-check="styles">
+                        <div class="option-label">
+                            <strong>🎨 CSS анализ</strong>
+                            <small>Критический CSS, размер</small>
+                        </div>
+                    </label>
+                    <label class="option">
+                        <input type="checkbox" checked data-check="caching">
+                        <div class="option-label">
+                            <strong>💾 Кэширование</strong>
+                            <small>Browser cache, CDN</small>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="tab-content" data-content="technical">
+                <div class="options-grid">
+                    <label class="option">
+                        <input type="checkbox" checked data-check="html">
+                        <div class="option-label">
+                            <strong>📝 HTML валидация</strong>
+                            <small>Структура, семантика</small>
+                        </div>
+                    </label>
+                    <label class="option">
+                        <input type="checkbox" checked data-check="structured">
+                        <div class="option-label">
+                            <strong>🏗️ Schema.org</strong>
+                            <small>Микроразметка, JSON-LD</small>
+                        </div>
+                    </label>
+                    <label class="option">
+                        <input type="checkbox" checked data-check="sitemap">
+                        <div class="option-label">
+                            <strong>🗺️ Sitemap & Robots</strong>
+                            <small>XML карта, robots.txt</small>
+                        </div>
+                    </label>
+                    <label class="option">
+                        <input type="checkbox" checked data-check="console">
+                        <div class="option-label">
+                            <strong>⚠️ Ошибки консоли</strong>
+                            <small>JS errors, warnings</small>
+                        </div>
+                    </label>
+                    <label class="option">
+                        <input type="checkbox" checked data-check="http">
+                        <div class="option-label">
+                            <strong>🌐 HTTP/2 & HTTP/3</strong>
+                            <small>Протоколы, компрессия</small>
+                        </div>
+                    </label>
+                    <label class="option">
+                        <input type="checkbox" checked data-check="cdn">
+                        <div class="option-label">
+                            <strong>☁️ CDN анализ</strong>
+                            <small>Использование CDN</small>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="tab-content" data-content="content">
+                <div class="options-grid">
+                    <label class="option">
+                        <input type="checkbox" checked data-check="headings">
+                        <div class="option-label">
+                            <strong>📑 Структура заголовков</strong>
+                            <small>H1-H6 иерархия</small>
+                        </div>
+                    </label>
+                    <label class="option">
+                        <input type="checkbox" checked data-check="links">
+                        <div class="option-label">
+                            <strong>🔗 Анализ ссылок</strong>
+                            <small>Внутренние, внешние, битые</small>
+                        </div>
+                    </label>
+                    <label class="option">
+                        <input type="checkbox" checked data-check="readability">
+                        <div class="option-label">
+                            <strong>📖 Читаемость</strong>
+                            <small>Flesch-Kincaid, длина</small>
+                        </div>
+                    </label>
+                    <label class="option">
+                        <input type="checkbox" checked data-check="keywords">
+                        <div class="option-label">
+                            <strong>🎯 Ключевые слова</strong>
+                            <small>Плотность, LSI</small>
+                        </div>
+                    </label>
+                    <label class="option">
+                        <input type="checkbox" checked data-check="opengraph">
+                        <div class="option-label">
+                            <strong>📱 Open Graph</strong>
+                            <small>Соцсети, превью</small>
+                        </div>
+                    </label>
+                    <label class="option">
+                        <input type="checkbox" checked data-check="multimedia">
+                        <div class="option-label">
+                            <strong>🎬 Мультимедиа</strong>
+                            <small>Видео, аудио</small>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="advanced-options">
+                <h4>⚙️ Дополнительные настройки</h4>
+                <div class="device-selector">
+                    <button class="device-btn active" data-device="desktop">🖥️ Desktop</button>
+                    <button class="device-btn" data-device="mobile">📱 Mobile</button>
+                    <button class="device-btn" data-device="tablet">📱 Tablet</button>
+                    <button class="device-btn" data-device="all">🌐 Все устройства</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <h3>Выполняется комплексный анализ...</h3>
+            <p>Анализируем все аспекты вашего сайта</p>
+            <div class="progress-steps">
+                <div class="progress-step" id="step1">
+                    <div class="icon">⚡</div>
+                    <div>Производительность</div>
+                </div>
+                <div class="progress-step" id="step2">
+                    <div class="icon">🔍</div>
+                    <div>SEO</div>
+                </div>
+                <div class="progress-step" id="step3">
+                    <div class="icon">🔒</div>
+                    <div>Безопасность</div>
+                </div>
+                <div class="progress-step" id="step4">
+                    <div class="icon">📱</div>
+                    <div>Адаптивность</div>
+                </div>
+                <div class="progress-step" id="step5">
+                    <div class="icon">✅</div>
+                    <div>Завершение</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="results" id="results"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

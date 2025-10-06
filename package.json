@@ -1,0 +1,48 @@
+{
+  "name": "webmaster-pro",
+  "version": "2.0.0",
+  "description": "Профессиональный анализатор сайтов нового поколения",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx live-server --port=8080 --host=localhost",
+    "build": "echo 'No build step required for static site'",
+    "test": "echo 'No tests specified'",
+    "deploy": "gh-pages -d .",
+    "lint": "echo 'Linting HTML/CSS/JS files'",
+    "validate": "echo 'Validating HTML markup'"
+  },
+  "keywords": [
+    "website-analyzer",
+    "seo-audit", 
+    "performance-testing",
+    "accessibility",
+    "pagespeed",
+    "web-analytics"
+  ],
+  "author": "WebMaster Pro Team",
+  "license": "MIT",
+  "homepage": "https://github.com/your-username/webmaster-pro#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/your-username/webmaster-pro.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/webmaster-pro/issues"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "serve": "^14.2.1",
+    "gh-pages": "^6.1.1"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  }
+}

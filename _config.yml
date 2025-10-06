@@ -1,0 +1,12 @@
+# GitHub Pages Configuration for WebMaster Pro
+
+# Custom domain (if you have one)
+# webmasterpro.com
+
+# Default GitHub Pages domain
+# https://ваш-username.github.io/webmaster-pro
+
+# Build settings
+source: /
+destination: _site
+keep_files: [".git", ".gitkeep"]
