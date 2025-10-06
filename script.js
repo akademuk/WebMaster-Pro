@@ -20,7 +20,7 @@ function initializeApp() {
 
 // Initialize tabs functionality
 function initializeTabs() {
-    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabButtons = document.querySelectorAll('.tab');
     tabButtons.forEach(button => {
         button.addEventListener('click', function() {
             const targetTab = this.getAttribute('data-tab');
@@ -33,14 +33,17 @@ function initializeTabs() {
                 content.classList.remove('active');
             });
             
-            document.getElementById(targetTab).classList.add('active');
+            const targetContent = document.querySelector(`[data-content="${targetTab}"]`);
+            if (targetContent) {
+                targetContent.classList.add('active');
+            }
         });
     });
 }
 
 // Initialize checkboxes functionality
 function initializeCheckboxes() {
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    const checkboxes = document.querySelectorAll('input[type="checkbox"][data-check]');
     checkboxes.forEach(checkbox => {
         checkbox.addEventListener('change', function () {
             const checkAllBtn = document.getElementById('checkAll');
@@ -116,7 +119,7 @@ function showAlert(message, type = 'info') {
 
 // Toggle all checkboxes
 function toggleAll() {
-    const checkboxes = document.querySelectorAll('input[type="checkbox"][name="checks"]');
+    const checkboxes = document.querySelectorAll('input[type="checkbox"][data-check]');
     const checkAllBtn = document.getElementById('checkAll');
     const allChecked = Array.from(checkboxes).every(cb => cb.checked);
     
@@ -124,7 +127,9 @@ function toggleAll() {
         checkbox.checked = !allChecked;
     });
     
-    checkAllBtn.textContent = allChecked ? '✅ Выбрать всё' : '❌ Снять всё';
+    if (checkAllBtn) {
+        checkAllBtn.textContent = allChecked ? '✅ Выбрать всё' : '❌ Снять всё';
+    }
 }
 
 // Show progress animation
@@ -169,14 +174,17 @@ function normalizeURL(url) {
 
 // Get selected checks
 function getSelectedChecks() {
-    const checkboxes = document.querySelectorAll('input[name="checks"]:checked');
+    const checkboxes = document.querySelectorAll('input[data-check]:checked');
     const checks = {};
     
     checkboxes.forEach(checkbox => {
-        checks[checkbox.value] = true;
+        const checkType = checkbox.getAttribute('data-check');
+        if (checkType) {
+            checks[checkType] = true;
+        }
     });
     
-    // If no checks selected, select all
+    // If no checks selected, select all basic checks
     if (Object.keys(checks).length === 0) {
         return {
             performance: true,
@@ -203,11 +211,13 @@ async function analyzeSite(url) {
     const results = document.getElementById('results');
     const analyzeBtn = document.getElementById('analyzeBtn');
     
+    let normalizedUrl, checks, device;
+    
     try {
         // Normalize and validate URL
-        const normalizedUrl = normalizeURL(url);
-        const checks = getSelectedChecks();
-        const device = getSelectedDevice();
+        normalizedUrl = normalizeURL(url);
+        checks = getSelectedChecks();
+        device = getSelectedDevice();
         
         // Update URL input with normalized version
         document.getElementById('urlInput').value = normalizedUrl;
@@ -383,12 +393,27 @@ async function measurePerformanceMetrics(url) {
     const timing = performance.timing;
     const navigation = performance.navigation;
     
+    // Calculate real response time if available, otherwise simulate
+    let responseTime = Math.round(Math.random() * 1000 + 200);
+    if (currentAnalysisData && currentAnalysisData.responseTime) {
+        responseTime = currentAnalysisData.responseTime;
+    }
+    
+    // Calculate DOM load time
+    let domLoadTime = Math.round(Math.random() * 2000 + 500);
+    if (timing && timing.domContentLoadedEventEnd && timing.navigationStart) {
+        const calculatedTime = timing.domContentLoadedEventEnd - timing.navigationStart;
+        if (calculatedTime > 0) {
+            domLoadTime = calculatedTime;
+        }
+    }
+    
     const metrics = {
-        responseTime: currentAnalysisData?.responseTime || Math.round(Math.random() * 1000 + 200),
-        domLoadTime: timing.domContentLoadedEventEnd - timing.navigationStart || Math.round(Math.random() * 2000 + 500),
+        responseTime: responseTime,
+        domLoadTime: domLoadTime,
         domLoaded: document.readyState === 'complete',
         connection: getConnectionInfo(),
-        navigationType: navigation.type
+        navigationType: navigation ? navigation.type : 0
     };
     
     return metrics;
