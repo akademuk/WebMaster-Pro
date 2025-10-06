@@ -18,27 +18,39 @@ function initializeApp() {
     setupTooltips();
 }
 
-// Initialize tabs functionality
+// Initialize analysis mode functionality
 function initializeTabs() {
-    const tabButtons = document.querySelectorAll('.tab');
-    tabButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const targetTab = this.getAttribute('data-tab');
-            
-            tabButtons.forEach(btn => btn.classList.remove('active'));
-            this.classList.add('active');
-            
-            const tabContents = document.querySelectorAll('.tab-content');
-            tabContents.forEach(content => {
-                content.classList.remove('active');
-            });
-            
-            const targetContent = document.querySelector(`[data-content="${targetTab}"]`);
-            if (targetContent) {
-                targetContent.classList.add('active');
+    // Инициализация режимов анализа
+    const modeInputs = document.querySelectorAll('input[name="analysis-mode"]');
+    const detailedOptions = document.getElementById('detailedOptions');
+    const deviceSelector = document.getElementById('deviceSelector');
+    
+    modeInputs.forEach(input => {
+        input.addEventListener('change', function() {
+            if (this.value === 'detailed') {
+                detailedOptions.style.display = 'block';
+                deviceSelector.style.display = 'block';
+            } else {
+                detailedOptions.style.display = 'none';
+                deviceSelector.style.display = 'none';
             }
         });
     });
+    
+    // Кнопка переключения всех опций
+    const toggleAllBtn = document.getElementById('toggleAllBtn');
+    if (toggleAllBtn) {
+        toggleAllBtn.addEventListener('click', function() {
+            const checkboxes = document.querySelectorAll('.detailed-options input[type="checkbox"]');
+            const allChecked = Array.from(checkboxes).every(cb => cb.checked);
+            
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = !allChecked;
+            });
+            
+            this.textContent = allChecked ? '✅ Выбрать все' : '❌ Снять все';
+        });
+    }
 }
 
 // Initialize checkboxes functionality
@@ -174,18 +186,10 @@ function normalizeURL(url) {
 
 // Get selected checks
 function getSelectedChecks() {
-    const checkboxes = document.querySelectorAll('input[data-check]:checked');
-    const checks = {};
+    const selectedMode = document.querySelector('input[name="analysis-mode"]:checked');
     
-    checkboxes.forEach(checkbox => {
-        const checkType = checkbox.getAttribute('data-check');
-        if (checkType) {
-            checks[checkType] = true;
-        }
-    });
-    
-    // If no checks selected, select all basic checks
-    if (Object.keys(checks).length === 0) {
+    if (!selectedMode || selectedMode.value === 'simple') {
+        // Простой режим - все основные проверки
         return {
             performance: true,
             seo: true,
@@ -194,9 +198,31 @@ function getSelectedChecks() {
             security: true,
             mobile: true
         };
+    } else {
+        // Детальный режим - только выбранные проверки
+        const checkboxes = document.querySelectorAll('.detailed-options input[data-check]:checked');
+        const checks = {};
+        
+        checkboxes.forEach(checkbox => {
+            const checkType = checkbox.getAttribute('data-check');
+            if (checkType) {
+                checks[checkType] = true;
+            }
+        });
+        
+        // Если ничего не выбрано, используем основные проверки
+        if (Object.keys(checks).length === 0) {
+            return {
+                performance: true,
+                seo: true,
+                accessibility: true,
+                security: true,
+                mobile: true
+            };
+        }
+        
+        return checks;
     }
-    
-    return checks;
 }
 
 // Get selected device

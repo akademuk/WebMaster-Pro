@@ -53,221 +53,165 @@
     <div class="container">
         <div class="header">
             <h1>🚀 WebMaster Pro</h1>
-            <p class="subtitle">Профессиональный анализатор сайтов нового поколения</p>
-            <span class="version">v2.0 Premium Edition</span>
+            <p class="subtitle">Проанализируйте свой сайт за 30 секунд</p>
+            <div class="features-preview">
+                <span class="feature">⚡ Скорость</span>
+                <span class="feature">🔍 SEO</span>
+                <span class="feature">📱 Мобильность</span>
+                <span class="feature">🔒 Безопасность</span>
+            </div>
         </div>
 
         <div class="input-section">
-            <div class="input-group">
-                <input type="url" id="urlInput" placeholder="https://example.com" />
-                <button class="btn btn-primary" id="analyzeBtn">
-                    <span>🔍</span>
-                    <span>Запустить анализ</span>
-                </button>
-            </div>
-
-            <div class="tabs">
-                <button class="tab active" data-tab="basic">Основные проверки</button>
-                <button class="tab" data-tab="advanced">Продвинутый анализ</button>
-                <button class="tab" data-tab="technical">Технический аудит</button>
-                <button class="tab" data-tab="content">Контент и семантика</button>
-            </div>
-
-            <div class="tab-content active" data-content="basic">
-                <div class="options-grid" id="basicOptions">
-                    <label class="option">
-                        <input type="checkbox" checked data-check="performance">
-                        <div class="option-label">
-                            <strong>⚡ Производительность</strong>
-                            <small>FCP, LCP, TTI, CLS</small>
-                        </div>
-                    </label>
-                    <label class="option">
-                        <input type="checkbox" checked data-check="seo">
-                        <div class="option-label">
-                            <strong>🔍 SEO оптимизация</strong>
-                            <small>Meta теги, структура</small>
-                        </div>
-                    </label>
-                    <label class="option">
-                        <input type="checkbox" checked data-check="accessibility">
-                        <div class="option-label">
-                            <strong>♿ Доступность</strong>
-                            <small>WCAG, ARIA, контраст</small>
-                        </div>
-                    </label>
-                    <label class="option">
-                        <input type="checkbox" checked data-check="mobile">
-                        <div class="option-label">
-                            <strong>📱 Мобильная версия</strong>
-                            <small>Адаптивность, viewport</small>
-                        </div>
-                    </label>
-                    <label class="option">
-                        <input type="checkbox" checked data-check="security">
-                        <div class="option-label">
-                            <strong>🔒 Безопасность</strong>
-                            <small>SSL, CSP, заголовки</small>
-                        </div>
-                    </label>
-                    <label class="option">
-                        <input type="checkbox" checked data-check="bestpractices">
-                        <div class="option-label">
-                            <strong>✅ Best Practices</strong>
-                            <small>Стандарты веб-разработки</small>
-                        </div>
-                    </label>
+            <div class="main-form">
+                <h2>📊 Введите адрес вашего сайта</h2>
+                <p class="form-description">Мы проверим производительность, SEO, безопасность и мобильную версию</p>
+                
+                <div class="input-group">
+                    <div class="url-input-wrapper">
+                        <span class="url-icon">🌐</span>
+                        <input type="url" id="urlInput" placeholder="https://ваш-сайт.com" />
+                    </div>
+                    <button class="btn btn-primary" id="analyzeBtn">
+                        <span class="btn-icon">�</span>
+                        <span class="btn-text">Анализировать сайт</span>
+                        <span class="btn-subtitle">Бесплатно</span>
+                    </button>
+                </div>
+                
+                <div class="quick-examples">
+                    <span class="examples-label">Попробуйте:</span>
+                    <button class="example-btn" onclick="document.getElementById('urlInput').value='https://google.com'">Google</button>
+                    <button class="example-btn" onclick="document.getElementById('urlInput').value='https://github.com'">GitHub</button>
+                    <button class="example-btn" onclick="document.getElementById('urlInput').value='https://stackoverflow.com'">StackOverflow</button>
                 </div>
             </div>
 
-            <div class="tab-content" data-content="advanced">
-                <div class="options-grid">
-                    <label class="option">
-                        <input type="checkbox" checked data-check="pagespeed">
-                        <div class="option-label">
-                            <strong>🎯 PageSpeed детали</strong>
-                            <small>Подробные метрики</small>
-                        </div>
-                    </label>
-                    <label class="option">
-                        <input type="checkbox" checked data-check="images">
-                        <div class="option-label">
-                            <strong>🖼️ Оптимизация изображений</strong>
-                            <small>Форматы, размеры, lazy load</small>
-                        </div>
-                    </label>
-                    <label class="option">
-                        <input type="checkbox" checked data-check="fonts">
-                        <div class="option-label">
-                            <strong>🔤 Шрифты</strong>
-                            <small>Web fonts, загрузка</small>
-                        </div>
-                    </label>
-                    <label class="option">
-                        <input type="checkbox" checked data-check="scripts">
-                        <div class="option-label">
-                            <strong>📜 JavaScript</strong>
-                            <small>Размер, блокировка, defer</small>
-                        </div>
-                    </label>
-                    <label class="option">
-                        <input type="checkbox" checked data-check="styles">
-                        <div class="option-label">
-                            <strong>🎨 CSS анализ</strong>
-                            <small>Критический CSS, размер</small>
-                        </div>
-                    </label>
-                    <label class="option">
-                        <input type="checkbox" checked data-check="caching">
-                        <div class="option-label">
-                            <strong>💾 Кэширование</strong>
-                            <small>Browser cache, CDN</small>
-                        </div>
-                    </label>
+            <div class="analysis-mode">
+                <div class="mode-selector">
+                    <div class="mode-options">
+                        <label class="mode-option active">
+                            <input type="radio" name="analysis-mode" value="simple" checked>
+                            <div class="mode-card">
+                                <div class="mode-icon">⚡</div>
+                                <div class="mode-info">
+                                    <h3>Быстрый анализ</h3>
+                                    <p>Основные проверки за 30 секунд</p>
+                                </div>
+                            </div>
+                        </label>
+                        
+                        <label class="mode-option">
+                            <input type="radio" name="analysis-mode" value="detailed">
+                            <div class="mode-card">
+                                <div class="mode-icon">🔬</div>
+                                <div class="mode-info">
+                                    <h3>Детальный анализ</h3>
+                                    <p>Полная диагностика с рекомендациями</p>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="detailed-options" id="detailedOptions" style="display: none;">
+                    <div class="options-header">
+                        <h3>🔧 Выберите типы проверок</h3>
+                        <button class="toggle-all-btn" id="toggleAllBtn">✅ Выбрать все</button>
+                    </div>
+                    
+                    <div class="options-grid">
+                        <label class="option-card">
+                            <input type="checkbox" checked data-check="performance">
+                            <div class="option-content">
+                                <div class="option-header">
+                                    <span class="option-icon">⚡</span>
+                                    <span class="option-title">Производительность</span>
+                                </div>
+                                <div class="option-description">Время загрузки, скорость отклика</div>
+                                <div class="option-metrics">FCP • LCP • TTI • CLS</div>
+                            </div>
+                        </label>
+                        
+                        <label class="option-card">
+                            <input type="checkbox" checked data-check="seo">
+                            <div class="option-content">
+                                <div class="option-header">
+                                    <span class="option-icon">🔍</span>
+                                    <span class="option-title">SEO</span>
+                                </div>
+                                <div class="option-description">Поисковая оптимизация</div>
+                                <div class="option-metrics">Meta теги • Структура • Индексация</div>
+                            </div>
+                        </label>
+                        
+                        <label class="option-card">
+                            <input type="checkbox" checked data-check="security">
+                            <div class="option-content">
+                                <div class="option-header">
+                                    <span class="option-icon">🔒</span>
+                                    <span class="option-title">Безопасность</span>
+                                </div>
+                                <div class="option-description">SSL, заголовки безопасности</div>
+                                <div class="option-metrics">HTTPS • CSP • HSTS</div>
+                            </div>
+                        </label>
+                        
+                        <label class="option-card">
+                            <input type="checkbox" checked data-check="mobile">
+                            <div class="option-content">
+                                <div class="option-header">
+                                    <span class="option-icon">📱</span>
+                                    <span class="option-title">Мобильность</span>
+                                </div>
+                                <div class="option-description">Адаптивность для телефонов</div>
+                                <div class="option-metrics">Viewport • Touch • Responsive</div>
+                            </div>
+                        </label>
+                        
+                        <label class="option-card">
+                            <input type="checkbox" checked data-check="accessibility">
+                            <div class="option-content">
+                                <div class="option-header">
+                                    <span class="option-icon">♿</span>
+                                    <span class="option-title">Доступность</span>
+                                </div>
+                                <div class="option-description">Удобство для всех пользователей</div>
+                                <div class="option-metrics">WCAG • ARIA • Контраст</div>
+                            </div>
+                        </label>
+                        
+                        <label class="option-card">
+                            <input type="checkbox" checked data-check="bestpractices">
+                            <div class="option-content">
+                                <div class="option-header">
+                                    <span class="option-icon">✨</span>
+                                    <span class="option-title">Лучшие практики</span>
+                                </div>
+                                <div class="option-description">Современные веб-стандарты</div>
+                                <div class="option-metrics">HTML5 • Standards • Optimization</div>
+                            </div>
+                        </label>
+                    </div>
                 </div>
             </div>
 
-            <div class="tab-content" data-content="technical">
-                <div class="options-grid">
-                    <label class="option">
-                        <input type="checkbox" checked data-check="html">
-                        <div class="option-label">
-                            <strong>📝 HTML валидация</strong>
-                            <small>Структура, семантика</small>
-                        </div>
-                    </label>
-                    <label class="option">
-                        <input type="checkbox" checked data-check="structured">
-                        <div class="option-label">
-                            <strong>🏗️ Schema.org</strong>
-                            <small>Микроразметка, JSON-LD</small>
-                        </div>
-                    </label>
-                    <label class="option">
-                        <input type="checkbox" checked data-check="sitemap">
-                        <div class="option-label">
-                            <strong>🗺️ Sitemap & Robots</strong>
-                            <small>XML карта, robots.txt</small>
-                        </div>
-                    </label>
-                    <label class="option">
-                        <input type="checkbox" checked data-check="console">
-                        <div class="option-label">
-                            <strong>⚠️ Ошибки консоли</strong>
-                            <small>JS errors, warnings</small>
-                        </div>
-                    </label>
-                    <label class="option">
-                        <input type="checkbox" checked data-check="http">
-                        <div class="option-label">
-                            <strong>🌐 HTTP/2 & HTTP/3</strong>
-                            <small>Протоколы, компрессия</small>
-                        </div>
-                    </label>
-                    <label class="option">
-                        <input type="checkbox" checked data-check="cdn">
-                        <div class="option-label">
-                            <strong>☁️ CDN анализ</strong>
-                            <small>Использование CDN</small>
-                        </div>
-                    </label>
-                </div>
-            </div>
-
-            <div class="tab-content" data-content="content">
-                <div class="options-grid">
-                    <label class="option">
-                        <input type="checkbox" checked data-check="headings">
-                        <div class="option-label">
-                            <strong>📑 Структура заголовков</strong>
-                            <small>H1-H6 иерархия</small>
-                        </div>
-                    </label>
-                    <label class="option">
-                        <input type="checkbox" checked data-check="links">
-                        <div class="option-label">
-                            <strong>🔗 Анализ ссылок</strong>
-                            <small>Внутренние, внешние, битые</small>
-                        </div>
-                    </label>
-                    <label class="option">
-                        <input type="checkbox" checked data-check="readability">
-                        <div class="option-label">
-                            <strong>📖 Читаемость</strong>
-                            <small>Flesch-Kincaid, длина</small>
-                        </div>
-                    </label>
-                    <label class="option">
-                        <input type="checkbox" checked data-check="keywords">
-                        <div class="option-label">
-                            <strong>🎯 Ключевые слова</strong>
-                            <small>Плотность, LSI</small>
-                        </div>
-                    </label>
-                    <label class="option">
-                        <input type="checkbox" checked data-check="opengraph">
-                        <div class="option-label">
-                            <strong>📱 Open Graph</strong>
-                            <small>Соцсети, превью</small>
-                        </div>
-                    </label>
-                    <label class="option">
-                        <input type="checkbox" checked data-check="multimedia">
-                        <div class="option-label">
-                            <strong>🎬 Мультимедиа</strong>
-                            <small>Видео, аудио</small>
-                        </div>
-                    </label>
-                </div>
-            </div>
-
-            <div class="advanced-options">
-                <h4>⚙️ Дополнительные настройки</h4>
-                <div class="device-selector">
-                    <button class="device-btn active" data-device="desktop">🖥️ Desktop</button>
-                    <button class="device-btn" data-device="mobile">📱 Mobile</button>
-                    <button class="device-btn" data-device="tablet">📱 Tablet</button>
-                    <button class="device-btn" data-device="all">🌐 Все устройства</button>
+            
+            <div class="device-selector" id="deviceSelector" style="display: none;">
+                <h4>📱 Тип устройства для анализа</h4>
+                <div class="device-options">
+                    <button class="device-btn active" data-device="desktop">
+                        <span class="device-icon">🖥️</span>
+                        <span class="device-name">Компьютер</span>
+                    </button>
+                    <button class="device-btn" data-device="mobile">
+                        <span class="device-icon">📱</span>
+                        <span class="device-name">Телефон</span>
+                    </button>
+                    <button class="device-btn" data-device="tablet">
+                        <span class="device-icon">📱</span>
+                        <span class="device-name">Планшет</span>
+                    </button>
                 </div>
             </div>
         </div>
